@@ -1,0 +1,45 @@
+{
+  "labels": {
+    "subject": "Tema",
+    "email": "Correo Electrónico",
+    "message": "Mensaje",
+    "sortBy": "Ordenar Por",
+    "cardNumber": "Número de Tarjeta",
+    "expiredDate": "Fechador Caducado",
+    "cvc": "CVC",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "phoneNumber": "Número de Teléfono",
+    "searchAddress": "Dirección de búsqueda",
+    "city": "Ciudad",
+    "postalCode": "Código Postal",
+    "street": "Calle",
+    "streetNumber": "Número de la Calle",
+    "additionalInformation": "Información Adicional"
+  },
+  "errors": {
+    "subjectRequired": "El tema es obligatorio",
+    "emailInvalid": "El correo electrónico no es válido",
+    "emailRequired": "Correo electrónico obligatorio",
+    "messageRequired": "El mensaje es obligatorio",
+    "cardNumberInvalid": "El número de tarjeta no es válido",
+    "cardNumberIncomplete": "El número de tarjeta está incompleto",
+    "cardExpiryInvalid": "La fecha de caducidad no es válida",
+    "cardExpiryIncomplete": "La caducidad de la tarjeta está incompleta",
+    "cardCVCIncomplete": "CVC incompleta",
+    "firstNameMax": "El nombre debe tener un máximo de 50 caracteres",
+    "firstNameRequired": "El nombre es obligatorio",
+    "lastNameMax": "El apellido debe tener un máximo de 50 caracteres",
+    "lastNameRequired": "Apellido obligatorio",
+    "phoneNumberRequired": "Número de teléfono obligatorio",
+    "phoneNumberInvalid": "El número de teléfono no es válido. Debería tener el formato de España",
+    "postalCodeRequired": "Código postal es requerido",
+    "postalCodeInvalid": "Código postal no es válido",
+    "cityRequired": "Ciudad es requerida",
+    "streetRequired": "Calle es requerida",
+    "streetNumberRequired": "Número de calle es requerido"
+  },
+  "texts": {
+    "useSearchAddress": "Utilice la búsqueda para simplificar la entrada de su dirección"
+  }
+}

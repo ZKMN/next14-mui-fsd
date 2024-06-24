@@ -1,0 +1,45 @@
+{
+  "labels": {
+    "subject": "Subject",
+    "email": "Email",
+    "message": "Message",
+    "sortBy": "Sort By",
+    "cardNumber": "Card Number",
+    "expiredDate": "Expired Date",
+    "cvc": "CVC",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phoneNumber": "Phone Number",
+    "searchAddress": "Search Address",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "street": "Street",
+    "streetNumber": "Street Number",
+    "additionalInformation": "Additional Information"
+  },
+  "errors": {
+    "subjectRequired": "Subject is required",
+    "emailInvalid": "Email is invalid",
+    "emailRequired": "Email is required",
+    "messageRequired": "Message is required",
+    "cardNumberInvalid": "Card number is invalid",
+    "cardNumberIncomplete": "Card number is incomplete",
+    "cardExpiryInvalid": "Expiration date is invalid",
+    "cardExpiryIncomplete": "Card expiry is incomplete",
+    "cardCVCIncomplete": "CVC is incomplete",
+    "firstNameMax": "First name should be max 50 characters",
+    "firstNameRequired": "First name is required",
+    "lastNameMax": "Last name should be max 50 characters",
+    "lastNameRequired": "Last name is required",
+    "phoneNumberRequired": "Phone number is required",
+    "phoneNumberInvalid": "Phone number is invalid! Should be ES format",
+    "postalCodeRequired": "Postal code is required",
+    "postalCodeInvalid": "Postal code is invalid",
+    "cityRequired": "City is required",
+    "streetRequired": "Street is required",
+    "streetNumberRequired": "Street is number required"
+  },
+  "texts": {
+    "useSearchAddress": "Use the search to simplify your address entry"
+  }
+}

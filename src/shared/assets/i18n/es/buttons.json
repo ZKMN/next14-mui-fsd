@@ -1,0 +1,16 @@
+{
+  "filtersValue": "Filtros {{ value }}",
+  "clearFilters": "Limpiar Filtros",
+  "addToCart": "Añadir a la Cesta",
+  "checkout": "Pedido",
+  "continueShopping": "Seguir Comprando",
+  "edit": "Editar",
+  "remove": "Eliminar",
+  "confirm": "Confirme",
+  "confirmOrder": "Confirmar pedido",
+  "next": "Siguiente",
+  "back": "Volver",
+  "address": "Dirección de la Tienda",
+  "shippingPolicy": "Política de Envío",
+  "findYourFit": "Encuentre su ajuste"
+}
