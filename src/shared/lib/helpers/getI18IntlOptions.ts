@@ -1,13 +1,13 @@
-import { DEFAULT_FILE_NAME, DEFAULT_LNG, LANGUAGES } from '@/shared/consts';
+import { DEFAULT_FILE_NAME, DEFAULT_LOCALE, LANGUAGES } from '@/shared/consts';
 
-export function getI18IntlOptions(lng = DEFAULT_LNG, ns = DEFAULT_FILE_NAME) {
+export function getI18IntlOptions(locale = DEFAULT_LOCALE, ns = DEFAULT_FILE_NAME) {
   return {
     // debug: true,
     ns,
-    lng,
+    locale,
     defaultNS: DEFAULT_FILE_NAME,
-    fallbackLng: DEFAULT_LNG,
+    fallbackLocale: DEFAULT_LOCALE,
     fallbackNS: DEFAULT_FILE_NAME,
-    supportedLngs: LANGUAGES,
+    supportedLocales: LANGUAGES,
   };
 }

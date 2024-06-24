@@ -18,7 +18,7 @@ export const usePutRequest = <R, P = undefined>(options?: IAPIHookOptions<R, IAP
   request: TRequestCallback<P>,
   response: TResponse<R, IAPIRequestParams<P>>
 ] => {
-  const { lng } = useTypedParams();
+  const { locale } = useTypedParams();
 
   const {
     url,
@@ -43,7 +43,7 @@ export const usePutRequest = <R, P = undefined>(options?: IAPIHookOptions<R, IAP
     const urlWithParams = getURLWithQueryParams(String(callbackURL || url), callbackQueryParams || queryParams);
 
     run({
-      url: `${lng}/v1${urlWithParams}/`,
+      url: `${locale}/v1${urlWithParams}/`,
       payload,
       baseURL,
       withCredentials,

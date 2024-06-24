@@ -10,7 +10,7 @@ export const useClickRedirect = (): [
   (url: string, options?: NavigateOptions) => () => void,
   AppRouterInstance
 ] => {
-  const [handlePush, router] = useLngPushRouter();
+  const [handlePush, router] = useLocalePushRouter();
 
   const handleRedirect = useCallback((
     url: string,
@@ -22,35 +22,35 @@ export const useClickRedirect = (): [
   return [handleRedirect, router];
 };
 
-export const useLngPushRouter = (): [
+export const useLocalePushRouter = (): [
   (url: string, options?: NavigateOptions) => void,
   AppRouterInstance
 ] => {
-  const { lng } = useTypedParams();
+  const { locale } = useTypedParams();
   const router = useRouter();
 
   const handlePush = useCallback((
     url: string,
     options?: NavigateOptions,
   ) => {
-    router.push(`/${lng}${url}`, { scroll: true, ...options });
+    router.push(`/${locale}${url}`, { scroll: true, ...options });
   }, [router.push]);
 
   return [handlePush, router];
 };
 
-export const useLngReplaceRouter = (): [
+export const useLocaleReplaceRouter = (): [
   (url: string, options?: NavigateOptions) => void,
   AppRouterInstance
 ] => {
-  const { lng } = useTypedParams();
+  const { locale } = useTypedParams();
   const router = useRouter();
 
   const handlePush = useCallback((
     url: string,
     options?: NavigateOptions,
   ) => {
-    router.replace(`/${lng}${url}`, { scroll: true, ...options });
+    router.replace(`/${locale}${url}`, { scroll: true, ...options });
   }, [router.push]);
 
   return [handlePush, router];
@@ -62,9 +62,9 @@ export const useTypedParams = <T extends IRoutePathParams, >() => {
   return params;
 };
 
-export const usePathnameWithoutLng = () => {
-  const { lng } = useTypedParams();
+export const usePathnameWithoutLocale = () => {
+  const { locale } = useTypedParams();
   const pathname = usePathname();
 
-  return pathname.replace(`/${lng}`, '');
+  return pathname.replace(`/${locale}`, '');
 };

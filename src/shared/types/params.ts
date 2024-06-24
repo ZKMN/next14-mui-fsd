@@ -9,7 +9,7 @@ export interface IHookOptionsParams {
 
 export interface IRoutePathParams {
   [key: string]: string;
-  lng: TLanguages;
+  locale: TLanguages;
 }
 
 export interface INextPageParams {

@@ -13,7 +13,7 @@ export const useGetSWR = <R>({
   queryParams,
   withCredentials,
 }: IAPIHookOptions<R>) => {
-  const { lng } = useTypedParams();
+  const { locale } = useTypedParams();
 
   const fetcher: Fetcher<R, string> = async (u) => {
     const { data } = await apiGet<R>({ url: u, withCredentials });
@@ -21,7 +21,7 @@ export const useGetSWR = <R>({
     return data;
   };
 
-  const urlWithParams = getURLWithQueryParams(`${lng}/v1${url}`, queryParams);
+  const urlWithParams = getURLWithQueryParams(`${locale}/v1${url}`, queryParams);
 
   const response = useSWR<R, AxiosError>(urlWithParams, fetcher, { ...config, revalidateOnFocus: false });
 

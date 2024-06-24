@@ -10,11 +10,11 @@ import { LANGUAGES } from '@/shared/consts';
 import { INextPageParams } from '@/shared/types';
 
 export async function generateStaticParams() {
-  return LANGUAGES.map((lng) => ({ lng }));
+  return LANGUAGES.map((locale) => ({ locale }));
 }
 
-const RootLayout = ({ children, params: { lng } }: React.PropsWithChildren<INextPageParams>) => (
-  <html lang={lng} dir={dir(lng)}>
+const RootLayout = ({ children, params: { locale } }: React.PropsWithChildren<INextPageParams>) => (
+  <html lang={locale} dir={dir(locale)}>
     <body className={hendrixFont.className}>
 
       <SpeedInsights />

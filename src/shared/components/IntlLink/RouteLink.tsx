@@ -27,14 +27,14 @@ export const RouteLink = ({
   lineHeight,
   textTransform,
 }: LinkProps & { to: string; }) => {
-  const { lng } = useTypedParams();
+  const { locale } = useTypedParams();
 
   return (
     <Link
       passHref
       legacyBehavior
-      href={`/${lng}${to}`}
-      lang={lng}
+      href={`/${locale}${to}`}
+      lang={locale}
       locale={false}
     >
       <MUILink

@@ -15,7 +15,7 @@ const runsOnServerSide = typeof window === 'undefined';
 i18next
   .use(initReactI18next)
   .use(LanguageDetector)
-  .use(resourcesToBackend((lng: string, filename: string) => import(`../../assets/i18n/${lng}/${filename}.json`)))
+  .use(resourcesToBackend((locale: string, filename: string) => import(`../../assets/i18n/${locale}/${filename}.json`)))
   .init({
     ...getI18IntlOptions(),
     lng: undefined, // let detect the language on client side
@@ -29,28 +29,28 @@ export const useClientTranslation = (
   filename = DEFAULT_FILE_NAME,
   options = { keyPrefix: '' },
 ): [(label: string, values?: Record<string, unknown>) => string, { i18n: i18n; ready: boolean; }] => {
-  const { lng } = useTypedParams();
+  const { locale } = useTypedParams();
 
   const translation = useTranslation(filename, options);
 
   const { i18n } = translation;
 
-  if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
-    i18n.changeLanguage(lng);
+  if (runsOnServerSide && locale && i18n.resolvedLanguage !== locale) {
+    i18n.changeLanguage(locale);
   } else {
-    const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
+    const [activeLocale, setActiveLocale] = useState(i18n.resolvedLanguage);
 
     useEffect(() => {
-      if (activeLng === i18n.resolvedLanguage) return;
+      if (activeLocale === i18n.resolvedLanguage) return;
 
-      setActiveLng(i18n.resolvedLanguage);
-    }, [activeLng, i18n.resolvedLanguage]);
+      setActiveLocale(i18n.resolvedLanguage);
+    }, [activeLocale, i18n.resolvedLanguage]);
 
     useEffect(() => {
-      if (!lng || i18n.resolvedLanguage === lng) return;
+      if (!locale || i18n.resolvedLanguage === locale) return;
 
-      i18n.changeLanguage(lng);
-    }, [lng, i18n]);
+      i18n.changeLanguage(locale);
+    }, [locale, i18n]);
   }
 
   const handleTranslation = useCallback((label: string, values?: Record<string, unknown>) => translation.t(label, values), []);

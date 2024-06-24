@@ -18,7 +18,7 @@ export const useDeleteRequest = <R>(options?: IAPIHookOptions<R, IAPIRequestPara
   request: TRequestCallback,
   response: TResponse<R, IAPIRequestParams>
 ] => {
-  const { lng } = useTypedParams();
+  const { locale } = useTypedParams();
 
   const {
     url,
@@ -43,7 +43,7 @@ export const useDeleteRequest = <R>(options?: IAPIHookOptions<R, IAPIRequestPara
     const urlWithParams = getURLWithQueryParams(String(callbackURL || url), callbackQueryParams || queryParams);
 
     run({
-      url: `${lng}/v1${urlWithParams}/`,
+      url: `${locale}/v1${urlWithParams}/`,
       baseURL,
       withCredentials,
     });
