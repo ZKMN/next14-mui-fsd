@@ -21,7 +21,7 @@ export const useGetSWR = <R>({
     return data;
   };
 
-  const urlWithParams = getURLWithQueryParams(`${locale}/v1${url}`, queryParams);
+  const urlWithParams = getURLWithQueryParams(`${url}`, { ...queryParams, locale });
 
   const response = useSWR<R, AxiosError>(urlWithParams, fetcher, { ...config, revalidateOnFocus: false });
 

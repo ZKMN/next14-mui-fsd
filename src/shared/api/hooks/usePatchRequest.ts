@@ -3,7 +3,6 @@ import { useRequest } from 'ahooks';
 import { AxiosResponse } from 'axios';
 
 import { getURLWithQueryParams } from '@/shared/lib/helpers';
-import { useTypedParams } from '@/shared/lib/hooks';
 import {
   IAPIHookOptions,
   IAPIRequestParams,
@@ -18,8 +17,6 @@ export const usePatchRequest = <R, P = undefined>(options?: IAPIHookOptions<R, I
   request: TRequestCallback<P>,
   response: TResponse<R, IAPIRequestParams<P>>
 ] => {
-  const { locale } = useTypedParams();
-
   const {
     url,
     config,
@@ -43,7 +40,7 @@ export const usePatchRequest = <R, P = undefined>(options?: IAPIHookOptions<R, I
     const urlWithParams = getURLWithQueryParams(String(callbackURL || url), callbackQueryParams || queryParams);
 
     run({
-      url: `${locale}/v1${urlWithParams}/`,
+      url: `${urlWithParams}`,
       payload,
       baseURL,
       withCredentials,

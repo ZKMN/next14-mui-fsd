@@ -3,7 +3,6 @@ import { useRequest } from 'ahooks';
 import { AxiosResponse } from 'axios';
 
 import { getURLWithQueryParams } from '@/shared/lib/helpers';
-import { useTypedParams } from '@/shared/lib/hooks';
 import {
   IAPIHookOptions,
   IAPIRequestParams,
@@ -18,8 +17,6 @@ export const useDeleteRequest = <R>(options?: IAPIHookOptions<R, IAPIRequestPara
   request: TRequestCallback,
   response: TResponse<R, IAPIRequestParams>
 ] => {
-  const { locale } = useTypedParams();
-
   const {
     url,
     config,
@@ -43,7 +40,7 @@ export const useDeleteRequest = <R>(options?: IAPIHookOptions<R, IAPIRequestPara
     const urlWithParams = getURLWithQueryParams(String(callbackURL || url), callbackQueryParams || queryParams);
 
     run({
-      url: `${locale}/v1${urlWithParams}/`,
+      url: `${urlWithParams}`,
       baseURL,
       withCredentials,
     });
