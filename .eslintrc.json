@@ -25,7 +25,7 @@
     "@typescript-eslint",
     "simple-import-sort"
   ],
-  "ignorePatterns": ["**/codegen/**"],
+  "ignorePatterns": ["src/VideoEditor/**"],
   "rules": {
     "simple-import-sort/imports": [
       "error",

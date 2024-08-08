@@ -6,7 +6,7 @@ const commonVars = {
   },
   urls: {
     API: process.env.NEXT_PUBLIC_API_URL, // process.env.APP_ENV,
-    site: '',
+    site: 'https://example.com',
     imgCDN: process.env.NEXT_PUBLIC_API_URL,
   },
 };
@@ -17,7 +17,7 @@ export const config = {
     ...commonVars,
     urls: {
       ...commonVars.urls,
-      site: '',
+      site: 'https://example.com',
     },
   },
   development: commonVars,
