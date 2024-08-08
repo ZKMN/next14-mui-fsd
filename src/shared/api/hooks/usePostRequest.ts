@@ -11,11 +11,11 @@ import {
   TResponse,
 } from '@/shared/types';
 
-import { apiDelete } from '../instance';
+import { apiPost } from '../instance';
 
-export const useDeleteRequest = <R>(options?: IAPIHookOptions<R, IAPIRequestParams>): [
-  request: TRequestCallback,
-  response: TResponse<R, IAPIRequestParams>
+export const usePostRequest = <R, P = undefined>(options?: IAPIHookOptions<R, IAPIRequestParams<P>>): [
+  request: TRequestCallback<P>,
+  response: TResponse<R, IAPIRequestParams<P>>
 ] => {
   const {
     url,
@@ -30,18 +30,19 @@ export const useDeleteRequest = <R>(options?: IAPIHookOptions<R, IAPIRequestPara
     run,
     data,
     ...rest
-  } = useRequest<AxiosResponse<R>, [IAPIRequestParams]>(
-    apiDelete,
+  } = useRequest<AxiosResponse<R, P>, [IAPIRequestParams<P>]>(
+    apiPost,
     { ...config, manual: true },
   );
 
-  const handleDeleteRequest = useCallback((params?: Omit<IRequestCallbackParams, 'payload'>) => {
-    const { callbackQueryParams, callbackURL } = params || {};
+  const handlePostRequest = useCallback((params?: IRequestCallbackParams<P>) => {
+    const { payload, callbackQueryParams, callbackURL } = params || {};
 
     const urlWithParams = getURLWithQueryParams(String(callbackURL || url), callbackQueryParams || queryParams);
 
     run({
       url: `${urlWithParams}`,
+      payload,
       baseURL,
       headers,
       withCredentials,
@@ -49,7 +50,7 @@ export const useDeleteRequest = <R>(options?: IAPIHookOptions<R, IAPIRequestPara
   }, [url]);
 
   return [
-    handleDeleteRequest,
+    handlePostRequest,
     {
       ...rest,
       data: data?.data,

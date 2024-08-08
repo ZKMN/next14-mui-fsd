@@ -21,6 +21,7 @@ export const usePatchRequest = <R, P = undefined>(options?: IAPIHookOptions<R, I
     url,
     config,
     baseURL,
+    headers,
     queryParams,
     withCredentials,
   } = options || {};
@@ -43,6 +44,7 @@ export const usePatchRequest = <R, P = undefined>(options?: IAPIHookOptions<R, I
       url: `${urlWithParams}`,
       payload,
       baseURL,
+      headers,
       withCredentials,
     });
   }, [url]);

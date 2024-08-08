@@ -22,9 +22,10 @@ export interface IAPIRequestParams<P = undefined> {
 }
 
 export interface IAPIHookOptions<R, TParams = undefined> {
-  url?: string;
-  baseURL?: string;
+  url: string;
   config?: TParams extends undefined ? SWRConfiguration<R> : TRequestOptions<R, TParams>;
+  baseURL?: string;
+  headers?: RawAxiosRequestHeaders;
   queryParams?: StringifiableRecord;
   withCredentials?: boolean;
 }

@@ -21,6 +21,7 @@ export const usePutRequest = <R, P = undefined>(options?: IAPIHookOptions<R, IAP
     url,
     config,
     baseURL,
+    headers,
     queryParams,
     withCredentials,
   } = options || {};
@@ -43,6 +44,7 @@ export const usePutRequest = <R, P = undefined>(options?: IAPIHookOptions<R, IAP
       url: `${urlWithParams}`,
       payload,
       baseURL,
+      headers,
       withCredentials,
     });
   }, [url]);

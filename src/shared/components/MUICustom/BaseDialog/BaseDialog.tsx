@@ -15,7 +15,7 @@ import { TransitionProps } from '@mui/material/transitions';
 import { useMediaSizes } from '@/shared/lib/hooks';
 import { IBaseDialogProps } from '@/shared/types';
 
-import { IntlButton, IntlTypography, IntlLoadingButton } from '../..';
+import { IntlButton, IntlLoadingButton, IntlTypography } from '../..';
 
 const Transition = React.forwardRef((
   props: TransitionProps & { children: React.ReactElement; },
