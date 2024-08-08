@@ -15,14 +15,14 @@ const runsOnServerSide = typeof window === 'undefined';
 i18next
   .use(initReactI18next)
   .use(LanguageDetector)
-  .use(resourcesToBackend((locale: string, filename: string) => import(`../../assets/i18n/${locale}/${filename}.json`)))
+  .use(resourcesToBackend((lng: string, filename: string) => import(`../../assets/i18n/${lng}/${filename}.json`)))
   .init({
     ...getI18IntlOptions(),
     lng: undefined, // let detect the language on client side
-    preload: runsOnServerSide ? LANGUAGES : [],
     detection: {
-      order: ['path', 'cookie', 'htmlTag', 'navigator'],
+      order: ['path', 'htmlTag', 'cookie', 'navigator'],
     },
+    preload: runsOnServerSide ? LANGUAGES : [],
   });
 
 export const useClientTranslation = (
@@ -53,7 +53,16 @@ export const useClientTranslation = (
     }, [locale, i18n]);
   }
 
-  const handleTranslation = useCallback((label: string, values?: Record<string, unknown>) => translation.t(label, values), []);
+  const handleTranslation = useCallback((label: string, values?: Record<string, unknown>) => {
+    const prefixedKey = options.keyPrefix ? `${options.keyPrefix}.${label}` : label;
+    const translationNotExists = i18n.exists(prefixedKey, { ns: filename });
+
+    if (translationNotExists) {
+      return translation.t(label, values);
+    }
+
+    return label;
+  }, [i18n, options.keyPrefix, translation]);
 
   return [handleTranslation, { i18n, ready: translation.ready }];
 };

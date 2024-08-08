@@ -1,29 +1,34 @@
-export const ICONS = [{
-  rel: 'icon',
-  type: 'image/x-icon',
-  sizes: '16x16',
-  url: '/images/favicons/favicon.ico',
-}, {
-  rel: 'icon',
-  type: 'image/png',
-  sizes: '16x16',
-  url: '/images/favicons/favicon-16x16.png',
-}, {
-  rel: 'icon',
-  type: 'image/png',
-  sizes: '32x32',
-  url: '/images/favicons/favicon-32x32.png',
-}, {
-  rel: 'icon',
-  type: 'image/png',
-  sizes: '194x194',
-  url: '/images/favicons/favicon-194x194.png',
-}, {
-  rel: 'apple-touch-icon',
-  sizes: '180x180',
-  url: '/images/favicons/apple-icon.png',
-}, {
-  rel: 'mask-icon',
-  color: '#ff7c2a',
-  url: '/images/favicons/safari-pinned-tab.svg',
-}];
+import { Languages } from 'next/dist/lib/metadata/types/alternative-urls-types';
+import { Robots } from 'next/dist/lib/metadata/types/metadata-types';
+
+import { config } from '../lib/config';
+import { ELocales } from '../types';
+
+export const ICONS = [];
+
+export const ROBOTS: Robots = {
+  index: true,
+  follow: true,
+  nosnippet: false,
+  notranslate: false,
+  noimageindex: false,
+  noarchive: false,
+  'max-snippet': -1,
+  'max-image-preview': 'standard',
+  'max-video-preview': -1,
+  googleBot: {
+    index: true,
+    follow: true,
+    nosnippet: false,
+    notranslate: false,
+    noimageindex: false,
+    noarchive: false,
+    'max-snippet': -1,
+    'max-image-preview': 'standard',
+    'max-video-preview': -1,
+  },
+};
+
+export const LANGUAGES_ALTERNATE: Languages<string> = {
+  en: `${config.urls.site}/${ELocales.EN}`,
+};

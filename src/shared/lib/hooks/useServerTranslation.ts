@@ -4,9 +4,9 @@ import resourcesToBackend from 'i18next-resources-to-backend';
 
 import { DEFAULT_FILE_NAME } from '@/shared/consts';
 import { getI18IntlOptions } from '@/shared/lib/helpers';
-import { TLanguages } from '@/shared/types';
+import { ELocales } from '@/shared/types';
 
-const initI18next = async (locale: TLanguages, filename: string) => {
+const initI18next = async (locale: ELocales, filename: string) => {
   const i18nInstance = createInstance();
 
   await i18nInstance
@@ -17,7 +17,7 @@ const initI18next = async (locale: TLanguages, filename: string) => {
   return i18nInstance;
 };
 
-export const useServerTranslation = async (locale: TLanguages, filename = DEFAULT_FILE_NAME, options = { keyPrefix: '' }) => {
+export const useServerTranslation = async (locale: ELocales, filename = DEFAULT_FILE_NAME, options = { keyPrefix: '' }) => {
   const i18nextInstance = await initI18next(locale, filename);
 
   return {

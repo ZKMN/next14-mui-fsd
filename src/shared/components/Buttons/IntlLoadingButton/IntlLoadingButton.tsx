@@ -4,7 +4,7 @@ import { Button, ButtonProps, CircularProgress } from '@mui/material';
 import { useClientTranslation } from '@/shared/lib/hooks';
 import { IIntlProps } from '@/shared/types';
 
-export const LoadingIntlButton = ({
+export const IntlLoadingButton = ({
   sx,
   size,
   intl,

@@ -63,10 +63,10 @@ export const BaseImage = ({
         priority={priority}
         style={{
           borderRadius,
+          objectFit: objectFit || 'cover',
+          cursor: pointer ? 'pointer' : 'default',
           width: '100%',
           height: 'auto',
-          cursor: (onClick || pointer) ? 'pointer' : '',
-          objectFit: 'cover',
         }}
       />
     );
@@ -98,22 +98,22 @@ export const BaseImage = ({
       width={width}
       height={height}
       position="relative"
-      overflow="hidden"
     >
       <Image
         fill
         src={src}
         alt={alt}
-        sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        sizes={`${width}px`}
         loader={imageLoader}
         onClick={onClick}
         priority={priority}
+        className={className}
         placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,${getBase64(shimmer(width, height))}`}
         style={{
           borderRadius,
-          cursor: (onClick || pointer) ? 'pointer' : '',
           objectFit: objectFit || 'cover',
+          cursor: pointer ? 'pointer' : 'default',
         }}
       />
     </Box>

@@ -56,8 +56,8 @@ export const useLocaleReplaceRouter = (): [
   return [handlePush, router];
 };
 
-export const useTypedParams = <T extends IRoutePathParams, >() => {
-  const params = useParams<T>();
+export const useTypedParams = () => {
+  const params = useParams<IRoutePathParams>();
 
   return params;
 };

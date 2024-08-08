@@ -1,15 +1,15 @@
 import { AxiosError } from 'axios';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
-import { TLanguages } from './common';
+import { ELocales } from './common';
 
 export interface IHookOptionsParams {
   onError?: (error?: AxiosError) => void;
   onSuccess?: <T>(data?: T) => void;
 }
 
-export interface IRoutePathParams {
-  [key: string]: string;
-  locale: TLanguages;
+export interface IRoutePathParams extends Params {
+  locale: ELocales;
 }
 
 export interface INextPageParams {

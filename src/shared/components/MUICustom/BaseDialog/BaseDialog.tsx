@@ -15,7 +15,7 @@ import { TransitionProps } from '@mui/material/transitions';
 import { useMediaSizes } from '@/shared/lib/hooks';
 import { IBaseDialogProps } from '@/shared/types';
 
-import { IntlButton, IntlTypography, LoadingIntlButton } from '../..';
+import { IntlButton, IntlTypography, IntlLoadingButton } from '../..';
 
 const Transition = React.forwardRef((
   props: TransitionProps & { children: React.ReactElement; },
@@ -56,7 +56,7 @@ export const BaseDialog = ({
 
       {onSubmit && (
         <Grid item xs={12} md={6}>
-          <LoadingIntlButton
+          <IntlLoadingButton
             intl={{ label: 'submit' }}
             variant="contained"
             loading={loading}
