@@ -1,4 +1,5 @@
-import Creatomate from 'creatomate';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Creatomate = require('creatomate');
 
 // TODO: PUT KEY HERE
 const client = new Creatomate.Client('');
