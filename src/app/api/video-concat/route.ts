@@ -2,7 +2,7 @@
 const Creatomate = require('creatomate');
 
 // TODO: PUT KEY HERE
-const client = new Creatomate.Client('');
+const client = new Creatomate.Client('988c719cfc754af58a7f9294b996a100983f1324e5d0f57449d68376008950d1d37045b4985fc96d8a3deabcd6dca541');
 
 export async function POST(request: Request) {
   try {

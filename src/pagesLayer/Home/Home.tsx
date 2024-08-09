@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/media-has-caption */
+
 'use client';
 
 import React from 'react';
@@ -21,12 +23,12 @@ const videoSrcs = [
 export const Home = () => {
   const [handleRedirect] = useClickRedirect();
 
-  const [post, { data, loading }] = usePostRequest({
+  const [post, { data, loading }] = usePostRequest<{ data: Record<string, string>[]; }>({
     url: '/video-concat',
     baseURL: 'http://localhost:3000/api',
   });
 
-  console.log(data);
+  const record = data?.data[0];
 
   return (
     <Grid container padding={2} spacing={2}>
@@ -49,9 +51,22 @@ export const Home = () => {
         </Grid>
       ))}
 
-      <Grid container>
-        <Grid item>
+      <Grid container padding={2} spacing={2}>
+        <Grid item xs={12}>
+          {!!record && (
+            <video
+              controls
+              width={record.width}
+              height={record.height}
+            >
+              <source src={record.url} type="video/mp4" />
+            </video>
+          )}
+        </Grid>
+
+        <Grid item xs={12}>
           <IntlLoadingButton
+            sx={{ width: 'auto' }}
             onClick={() => post()}
             variant="contained"
             loading={loading}
