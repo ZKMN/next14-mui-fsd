@@ -15,3 +15,9 @@ export interface IRoutePathParams extends Params {
 export interface INextPageParams {
   params: IRoutePathParams;
 }
+
+export interface IMetadataParams {
+  path: string;
+  title: string;
+  description: string;
+}

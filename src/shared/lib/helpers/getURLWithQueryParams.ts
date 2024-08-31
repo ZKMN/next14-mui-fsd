@@ -1,10 +1,11 @@
-import queryString, { StringifiableRecord } from 'query-string';
+import qs from 'qs';
 
-export const getURLWithQueryParams = (url: string, queryParams?: StringifiableRecord) => queryString.stringifyUrl({
-  url,
-  query: queryParams,
-}, {
-  skipNull: true,
-  skipEmptyString: true,
-  arrayFormat: 'comma',
-});
+export const getURLWithQueryParams = (url: string, queryParams?: Record<string, unknown>) => {
+  const queryString = qs.stringify(queryParams, {
+    skipNulls: true,
+    arrayFormat: 'comma',
+    encodeValuesOnly: true,
+  });
+
+  return queryString ? `${url}?${queryString}` : url;
+};

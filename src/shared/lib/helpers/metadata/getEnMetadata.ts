@@ -1,21 +1,17 @@
 import { Metadata } from 'next';
 
-import { ICONS, LANGUAGES_ALTERNATE, ROBOTS } from '@/shared/consts';
-import { ELanguages } from '@/shared/types';
+import { ICONS, ROBOTS } from '@/shared/consts';
+import { ELanguages, ELocales, IMetadataParams } from '@/shared/types';
 
-import { getAlternateELanguages } from './common';
+import { generateAlternateUrls, getAlternateELanguages } from './common';
 
 import { config } from '../../config';
 
 export const getEnMetadata = ({
-  url = config.urls.site,
+  path,
   title,
   description,
-}: {
-  url?: string;
-  title: string;
-  description: string;
-}): Metadata => ({
+}: IMetadataParams): Metadata => ({
   title,
   description,
   category: 'Site',
@@ -24,11 +20,11 @@ export const getEnMetadata = ({
   icons: ICONS,
   robots: ROBOTS,
   alternates: {
-    canonical: url,
-    languages: LANGUAGES_ALTERNATE,
+    canonical: `${config.urls.site}/${ELocales.EN}${path}`,
+    languages: generateAlternateUrls(path),
   },
   openGraph: {
-    url,
+    url: `${config.urls.site}/${ELocales.EN}${path}`,
     title,
     description,
     type: 'website',
@@ -36,7 +32,7 @@ export const getEnMetadata = ({
     phoneNumbers: [],
     siteName: 'Site',
     alternateLocale: getAlternateELanguages(ELanguages.EN),
-    countryName: 'USA',
+    countryName: 'Country',
     images: {
       url: '',
       width: 200,
@@ -46,7 +42,7 @@ export const getEnMetadata = ({
   twitter: {
     title,
     description,
-    site: url,
+    site: `${config.urls.site}/${ELocales.EN}${path}`,
     card: 'summary_large_image',
     images: {
       url: '',
@@ -57,24 +53,21 @@ export const getEnMetadata = ({
 });
 
 export const getArticleEnMetadata = ({
-  url,
+  path,
   tags,
   title,
   images,
   description,
   publishedTime,
 }: {
-  url: string;
   tags: string[];
-  title: string;
-  description: string;
   publishedTime: string;
   images: {
     url: string;
     width: string;
     height: string;
   };
-}): Metadata => ({
+} & IMetadataParams): Metadata => ({
   title,
   description,
   metadataBase: new URL(config.urls.site),
@@ -83,11 +76,11 @@ export const getArticleEnMetadata = ({
   icons: ICONS,
   robots: ROBOTS,
   alternates: {
-    canonical: url,
-    languages: LANGUAGES_ALTERNATE,
+    canonical: `${config.urls.site}/${ELocales.EN}${path}`,
+    languages: generateAlternateUrls(path),
   },
   openGraph: {
-    url,
+    url: `${config.urls.site}/${ELocales.EN}${path}`,
     tags,
     title,
     images,
@@ -97,7 +90,7 @@ export const getArticleEnMetadata = ({
     type: 'article',
     locale: ELanguages.EN,
     siteName: 'Site',
-    countryName: 'USA',
+    countryName: 'Country',
     phoneNumbers: [],
     alternateLocale: getAlternateELanguages(ELanguages.EN),
   },
@@ -105,6 +98,6 @@ export const getArticleEnMetadata = ({
     title,
     images,
     description,
-    site: url,
+    site: `${config.urls.site}/${ELocales.EN}${path}`,
   },
 });

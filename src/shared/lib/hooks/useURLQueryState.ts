@@ -5,7 +5,10 @@ import { useSearchParams } from 'next/navigation';
 
 import { useLocalePushRouter, usePathnameWithoutLocale } from '.';
 
-export const useURLQueryState = (): [(path?: string, options?: NavigateOptions) => void, URLSearchParams] => {
+export const useURLQueryState = (): [
+  (path?: string, options?: NavigateOptions) => void,
+  URLSearchParams & { pushSet: URLSearchParams['set']; pushDelete: URLSearchParams['delete']; }
+] => {
   const [push] = useLocalePushRouter();
   const pathname = usePathnameWithoutLocale();
   const searchParams = useSearchParams();
@@ -19,5 +22,18 @@ export const useURLQueryState = (): [(path?: string, options?: NavigateOptions) 
     push(`${path || pathname}${query}`, { scroll: false, ...options });
   };
 
-  return [handlePushQuery, queryParams];
+  const extendedQueryParams = {
+    pushSet: (name: string, value: string) => {
+      queryParams.set(name, value);
+      handlePushQuery();
+    },
+    pushDelete: (name: string, value?: string) => {
+      queryParams.delete(name, value);
+      handlePushQuery();
+    },
+  };
+
+  const params = Object.assign(queryParams, extendedQueryParams);
+
+  return [handlePushQuery, params];
 };

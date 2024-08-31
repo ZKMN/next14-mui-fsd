@@ -5,7 +5,6 @@ import {
   RawAxiosRequestHeaders,
   ResponseType,
 } from 'axios';
-import { StringifiableRecord } from 'query-string';
 import { SWRConfiguration } from 'swr';
 
 type TRequestOptions<R, TParams> = Omit<Options<AxiosResponse<R>, [TParams]>, 'onError' | 'defaultParams' | 'manual'> & {
@@ -26,14 +25,14 @@ export interface IAPIHookOptions<R, TParams = undefined> {
   config?: TParams extends undefined ? SWRConfiguration<R> : TRequestOptions<R, TParams>;
   baseURL?: string;
   headers?: RawAxiosRequestHeaders;
-  queryParams?: StringifiableRecord;
+  queryParams?: Record<string, unknown>;
   withCredentials?: boolean;
 }
 
 export interface IRequestCallbackParams<P = undefined> {
   payload?: P;
   callbackURL?: string;
-  callbackQueryParams?: StringifiableRecord;
+  callbackQueryParams?: Record<string, unknown>;
 }
 
 export type TRequestCallback<P = undefined> = (data?: P extends undefined

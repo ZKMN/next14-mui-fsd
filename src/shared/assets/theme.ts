@@ -1,11 +1,12 @@
 'use client';
 
 /* eslint-disable prefer-destructuring */
-import { createTheme, Palette } from '@mui/material';
+import { createTheme, lighten, Palette } from '@mui/material';
+import { Montserrat } from 'next/font/google';
 
 import { COLORS } from '@/shared/consts';
 
-import { hendrixFont } from './font';
+const montserrat = Montserrat({ subsets: ['latin'], style: 'normal' });
 
 export const palette = createTheme({ palette: COLORS as unknown as Palette }).palette;
 export const breakpoints = createTheme().breakpoints;
@@ -16,20 +17,14 @@ const options = {
     MuiButton: {
       styleOverrides: {
         root: {
-          width: '100%',
-          fontSize: 16,
-          fontWeight: 500,
           boxShadow: 'none',
-          borderRadius: '10px',
+          borderRadius: '8px',
           textTransform: 'none' as const,
-          ':disabled': {
-            opacity: 0.6,
-          },
           '&.Mui-disabled.MuiButton-containedPrimary': {
-            background: palette.primary.main,
+            background: lighten(palette.primary.main, 0.3),
           },
           '&.Mui-disabled.MuiButton-containedSecondary': {
-            background: palette.secondary.main,
+            background: lighten(palette.secondary.main, 0.3),
           },
           '&.MuiButton-containedPrimary': {
             color: palette.text.white,
@@ -49,14 +44,19 @@ const options = {
         },
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          fontWeight: 500,
+          fontFamily: montserrat.style.fontFamily,
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
           borderRadius: '8px',
           background: palette.background.paper,
-          '&.Mui-error': {
-            background: palette.background.error,
-          },
         },
       },
     },
@@ -67,11 +67,11 @@ const options = {
     },
   },
   typography: {
-    fontFamily: hendrixFont.style.fontFamily,
-    body1: {
-      color: '#272424',
-      fontSize: 16,
-      fontWeight: 400,
+    allVariants: {
+      color: palette.text.primary,
+      fontSize: '1rem',
+      fontWeight: 500,
+      fontFamily: montserrat.style.fontFamily,
     },
   },
 };
