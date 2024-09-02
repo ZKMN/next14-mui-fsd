@@ -69,8 +69,6 @@ const options = {
   typography: {
     allVariants: {
       color: palette.text.primary,
-      fontSize: '1rem',
-      fontWeight: 500,
       fontFamily: montserrat.style.fontFamily,
     },
   },
