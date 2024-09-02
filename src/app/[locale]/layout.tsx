@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { dir } from 'i18next';
 import Script from 'next/script';
@@ -16,8 +16,8 @@ export async function generateStaticParams() {
 
 const RootLayout = ({ children, params: { locale } }: React.PropsWithChildren<INextPageParams>) => (
   <MUIThemeProvider>
-    <Grid component="html" lang={locale} dir={dir(locale)}>
-      <Grid component="body">
+    <Box component="html" lang={locale} dir={dir(locale)}>
+      <Box component="body">
 
         <SpeedInsights />
 
@@ -65,8 +65,8 @@ const RootLayout = ({ children, params: { locale } }: React.PropsWithChildren<IN
             }
           `}
         </Script>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   </MUIThemeProvider>
 );
 

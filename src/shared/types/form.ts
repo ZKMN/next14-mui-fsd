@@ -7,18 +7,24 @@ import {
 } from 'react-hook-form';
 import {
   BaseTextFieldProps,
+  Breakpoint,
   ButtonProps,
+  GridSize,
   InputProps,
 } from '@mui/material';
-import { RegularBreakpoints } from '@mui/material/Grid';
 import * as Yup from 'yup';
 
 import { IIntlProps } from '.';
 
-export interface IFieldProps extends Omit<BaseTextFieldProps, 'label'>, Pick<InputProps, 'endAdornment'>, RegularBreakpoints {
+type ResponsiveStyleValue<T> = {
+  [key in Breakpoint]?: T | null;
+};
+
+export interface IFieldProps extends Omit<BaseTextFieldProps, 'label'>, Pick<InputProps, 'endAdornment'> {
   type: IFieldProps.type;
   name: string;
   intl: IIntlProps['intl'];
+  grid?: ResponsiveStyleValue<GridSize>;
 }
 
 export namespace IFieldProps {

@@ -9,7 +9,7 @@ import {
   useForm,
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Grid } from '@mui/material';
+import { Grid2 } from '@mui/material';
 import { useBoolean, useKeyPress } from 'ahooks';
 
 import { IFormProps } from '@/shared/types';
@@ -51,23 +51,21 @@ export const Form = <T extends FieldValues>({
 
   return (
     <FormProvider {...form}>
-      <Grid container spacing={2}>
+      <Grid2 container spacing={2}>
         {fields.map((field) => (
-          <Grid
-            item
-            xs={field.xs || 12}
-            md={field.md}
+          <Grid2
+            size={{ xs: field.grid?.xs || 12, md: field.grid?.md }}
             key={field.name}
           >
             <FieldByType field={field} />
-          </Grid>
+          </Grid2>
         ))}
-      </Grid>
+      </Grid2>
 
       {children}
 
       {buttonProps && onSubmit && (
-        <Grid container mt={3}>
+        <Grid2 container mt={3}>
           <IntlLoadingButton
             intl={buttonProps.intl}
             size={buttonProps.size || 'large'}
@@ -75,7 +73,7 @@ export const Form = <T extends FieldValues>({
             onClick={form.handleSubmit(onSubmit)}
             disabled={loading || !isValid || !isDirty || buttonProps.disabled}
           />
-        </Grid>
+        </Grid2>
       )}
     </FormProvider>
   );
