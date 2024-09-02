@@ -9,8 +9,8 @@ import {
   BaseTextFieldProps,
   ButtonProps,
   InputProps,
-  RegularBreakpoints,
 } from '@mui/material';
+import { RegularBreakpoints } from '@mui/material/Grid';
 import * as Yup from 'yup';
 
 import { IIntlProps } from '.';

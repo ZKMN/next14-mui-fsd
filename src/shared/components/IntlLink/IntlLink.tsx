@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Trans, TransProps } from 'react-i18next';
 import { Link as MUILink, LinkProps } from '@mui/material';
 
 import { useClientTranslation } from '@/shared/lib/hooks';
@@ -18,6 +19,7 @@ export const IntlLink = ({
   href,
   width,
   color,
+  trans,
   target = '_blank',
   variant,
   onClick,
@@ -30,9 +32,28 @@ export const IntlLink = ({
   fontWeight,
   fontFamily,
   lineHeight,
+  components,
   textTransform,
-}: LinkProps & { intl?: IIntlProps['intl']; to?: string; }) => {
-  const [translate] = useClientTranslation('typography', { keyPrefix: 'links' });
+}: LinkProps & { intl?: IIntlProps['intl']; to?: string; trans?: boolean; } & Pick<TransProps<string>, 'components'>) => {
+  const [translate] = intl ? useClientTranslation('links') : [];
+
+  let content = children;
+
+  if (intl && translate) {
+    content = translate(intl.label, intl.values);
+  }
+
+  if (intl && translate && (components || trans)) {
+    content = (
+      <Trans
+        t={translate as TransProps<string>['t']}
+        ns="links"
+        values={intl.values}
+        i18nKey={intl.label}
+        components={components}
+      />
+    );
+  }
 
   if (to) {
     return (
@@ -56,7 +77,7 @@ export const IntlLink = ({
         fontWeight={fontWeight}
         textTransform={textTransform}
       >
-        {intl ? translate(intl.label, intl.values) : children}
+        {content}
       </RouteLink>
     );
   }
@@ -80,9 +101,9 @@ export const IntlLink = ({
       fontFamily={fontFamily}
       fontWeight={fontWeight}
       textTransform={textTransform}
-      aria-label={intl && translate(intl.label)}
+      aria-label={(intl && translate) && translate(intl.label)}
     >
-      {intl ? translate(intl.label, intl.values) : children}
+      {content}
     </MUILink>
   );
 };

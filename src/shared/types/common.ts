@@ -9,3 +9,5 @@ export enum ELanguages {
 export const LanguageToLocaleMap: { [key in ELocales]: ELanguages } = {
   [ELocales.EN]: ELanguages.EN,
 };
+
+export type TNamespaces = 'links';
