@@ -1,5 +1,5 @@
 {
-  "name": "next14-mui-fsd",
+  "name": "feta",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.5",
+    "@apollo/experimental-nextjs-app-support": "^0.11.2",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.0",
@@ -17,21 +19,30 @@
     "@mui/material-nextjs": "^6.0.1",
     "accept-language": "^3.0.20",
     "ahooks": "^3.8.1",
-    "axios": "^1.6.8",
+    "graphql": "^16.9.0",
     "i18next": "^23.11.5",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-resources-to-backend": "^1.2.1",
+    "lodash": "^4.17.21",
     "next": "14.2.4",
     "qs": "^6.13.0",
     "react": "^18",
+    "react-cookie": "^7.2.0",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
-    "react-i18next": "^15.0.1",
-    "swr": "^2.2.5",
-    "yup": "^1.4.0"
+    "react-i18next": "^14.1.2",
+    "react-toastify": "^10.0.5",
+    "yup": "^1.4.0",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.3.3",
+    "@graphql-codegen/introspection": "4.0.3",
+    "@graphql-codegen/typescript": "^4.0.9",
+    "@graphql-eslint/eslint-plugin": "^3.20.1",
     "@next/eslint-plugin-next": "^13.4.9",
+    "@types/lodash": "^4.17.7",
     "@types/node": "^20",
     "@types/qs": "^6.9.15",
     "@types/react": "^18",

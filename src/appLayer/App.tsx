@@ -1,16 +1,33 @@
+'use client';
+
+import { memo, Suspense } from 'react';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
-import { Footer } from '@/widgets/Footer';
+import { ApolloWrapperProvider } from '@/appLayer/providers';
+
 import { Header } from '@/widgets/Header';
 
-import '../shared/styles/globals.scss';
+import {
+  DataLoading,
+  LibLoader,
+  NotifyContainer,
+} from './components';
 
-export const App = ({ children }: React.PropsWithChildren) => (
-  <AppRouterCacheProvider>
-    <Header />
+import '@/shared/styles/globals.scss';
 
-    <main>{children}</main>
+export const App = memo(({ children }: React.PropsWithChildren) => (
+  <ApolloWrapperProvider>
+    <AppRouterCacheProvider>
+      <Suspense>
+        <DataLoading />
+      </Suspense>
 
-    <Footer />
-  </AppRouterCacheProvider>
-);
+      <LibLoader />
+      <NotifyContainer />
+
+      <Header />
+
+      <main>{children}</main>
+    </AppRouterCacheProvider>
+  </ApolloWrapperProvider>
+));

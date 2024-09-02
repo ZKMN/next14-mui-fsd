@@ -3,6 +3,7 @@ const commonVars = {
   storageKeyName: '',
   keys: {
     gAPI: '',
+    xAPI: '',
   },
   urls: {
     API: process.env.NEXT_PUBLIC_API_URL, // process.env.APP_ENV,

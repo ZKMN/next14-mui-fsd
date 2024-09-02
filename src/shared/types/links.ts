@@ -1,3 +1,3 @@
 export enum Links {
-  HOME = '/home'
+  SIGN_IN = '/sign-in',
 }
