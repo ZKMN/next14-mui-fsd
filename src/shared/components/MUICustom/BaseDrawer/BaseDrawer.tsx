@@ -1,6 +1,11 @@
 import React from 'react';
 import { Close } from '@mui/icons-material';
-import { Drawer, Grid, IconButton } from '@mui/material';
+import {
+  Box,
+  Drawer,
+  Grid2,
+  IconButton,
+} from '@mui/material';
 
 import { useMediaSizes } from '@/shared/lib/hooks';
 import { BaseDrawerProps } from '@/shared/types';
@@ -38,7 +43,7 @@ export const BaseDrawer = ({
         }),
       }}
     >
-      <Grid
+      <Grid2
         container
         mb={2}
         alignItems="center"
@@ -48,31 +53,29 @@ export const BaseDrawer = ({
           <Close />
         </IconButton>
 
-        <Grid item flex={1}>
-          <Grid container justifyContent="space-between">
-            <Grid item>
-              {titleIntl && (
-                <IntlTypography
-                  ml={2}
-                  variant="h6"
-                  component="h6"
-                  fontWeight={700}
-                  fontSize={isLessSm ? 20 : 28}
-                  intl={titleIntl}
-                />
-              )}
-            </Grid>
+        <Grid2 container flex={1}>
+          <Grid2 container justifyContent="space-between">
+            {titleIntl && (
+              <IntlTypography
+                ml={2}
+                variant="h6"
+                component="h6"
+                fontWeight={700}
+                fontSize={isLessSm ? 20 : 28}
+                intl={titleIntl}
+              />
+            )}
 
-            <Grid item>
+            <Box>
               {titleExtraNode}
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+            </Box>
+          </Grid2>
+        </Grid2>
+      </Grid2>
 
-      <Grid>
+      <Grid2>
         {children}
-      </Grid>
+      </Grid2>
     </Drawer>
   );
 };

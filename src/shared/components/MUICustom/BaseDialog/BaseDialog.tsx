@@ -6,7 +6,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Grid,
+  Grid2,
   IconButton,
   Slide,
 } from '@mui/material';
@@ -41,30 +41,30 @@ export const BaseDialog = ({
   const { isLessSm } = useMediaSizes();
 
   const footerNode = footer || footer === null ? footer : (
-    <Grid
+    <Grid2
       container
       spacing={2}
       justifyContent="flex-end"
     >
-      <Grid item xs={12} md={6}>
+      <Grid2 size={{ xs: 12, md: 6 }}>
         <IntlButton
           intl={{ label: 'cancel' }}
           variant="outlined"
           onClick={onClose}
         />
-      </Grid>
+      </Grid2>
 
       {onSubmit && (
-        <Grid item xs={12} md={6}>
+        <Grid2 size={{ xs: 12, md: 6 }}>
           <IntlLoadingButton
             intl={{ label: 'submit' }}
             variant="contained"
             loading={loading}
             onClick={onSubmit}
           />
-        </Grid>
+        </Grid2>
       )}
-    </Grid>
+    </Grid2>
   );
 
   return (
@@ -89,9 +89,9 @@ export const BaseDialog = ({
             },
           })}
         >
-          <Grid container alignItems="center">
-            <Grid item flex={1}>
-              <Grid
+          <Grid2 container alignItems="center">
+            <Grid2 container flex={1}>
+              <Grid2
                 container
                 alignItems="center"
                 justifyContent="space-between"
@@ -104,17 +104,17 @@ export const BaseDialog = ({
                 />
 
                 {titleExtraNode}
-              </Grid>
-            </Grid>
+              </Grid2>
+            </Grid2>
 
             {closable && (
-              <Grid item>
+              <Grid2>
                 <IconButton onClick={onClose}>
                   <Close />
                 </IconButton>
-              </Grid>
+              </Grid2>
             )}
-          </Grid>
+          </Grid2>
         </DialogTitle>
       </AppBar>
 
